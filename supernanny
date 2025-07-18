@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Téléchargement Super Nanny</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      text-align: center;
+      padding-top: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    .button {
+      display: inline-block;
+      padding: 15px 30px;
+      margin: 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    .button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+  <h1>Super Nanny - Téléchargements</h1>
+
+  <a href="https://cdn-01.anonfiles.ch/_static/90165a4e-aeb2-48c3-b0b8-fceb3ad1cb68" class="button" download>
+    Télécharger : Super Nanny - Marwa (Audio+Video)
+  </a>
+
+  <a href="https://cdn-01.anonfiles.ch/_static/331e769d-1506-4cde-b364-dc74a8a86053" class="button" download>
+    Télécharger : Super Nanny - Karine & Didier + 10 enfants (Audio+Video)
+  </a>
+
+</body>
+</html>
