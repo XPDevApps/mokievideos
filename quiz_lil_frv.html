@@ -1,129 +1,47 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Empire 6942</title>
-    <style>
-        body { background: #0b0b0b; color: #ffd700; font-family: sans-serif; text-align: center; padding: 15px; }
-        .box { background: #1a1a1a; border: 2px solid #ff4500; padding: 20px; border-radius: 15px; max-width: 480px; margin: auto; box-shadow: 0 0 20px #ff4500; }
-        .media-quiz { width: 100%; border-radius: 10px; margin: 15px 0; border: 1px solid #333; background: black; }
-        .btn-zone { display: flex; flex-direction: column; gap: 8px; }
-        button { background: #ff4500; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; font-size: 15px; }
-        button:hover { background: #ffae00; }
-        .hidden { display: none; }
-        .xp-display { font-size: 20px; color: #00ff00; margin: 10px 0; font-weight: bold; }
-        /* Style du bouton RESET pur */
-        .reset-btn { background: #333; margin-top: 25px; font-size: 11px; padding: 6px; color: #777; border: 1px solid #444; width: auto; display: inline-block; padding-left: 15px; padding-right: 15px; }
-        .reset-btn:hover { background: #cc0000; color: white; border-color: #ff0000; }
-    </style>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<!--This file was converted to xhtml by LibreOffice - see https://cgit.freedesktop.org/libreoffice/core/tree/filter/source/xslt for the code.-->
+
+<head profile="http://dublincore.org/documents/dcmi-terms/">
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+<title xml:lang="en-US">- no title specified</title>
+<meta name="DCTERMS.title" content="" xml:lang="en-US"/>
+
+<meta name="DCTERMS.language" content="en-US" scheme="DCTERMS.RFC4646"/>
+<meta name="DCTERMS.source" content="http://xml.openoffice.org/odf2xhtml"/>
+
+<meta name="DCTERMS.issued" content="2026-03-03T18:57:27.531741200" scheme="DCTERMS.W3CDTF"/>
+
+<meta name="DCTERMS.modified" content="2026-03-03T19:39:48.373786800" scheme="DCTERMS.W3CDTF"/>
+
+
+<meta name="xsl:vendor" content="libxslt"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" hreflang="en"/>
+<link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" hreflang="en"/>
+<link rel="schema.DCTYPE" href="http://purl.org/dc/dcmitype/" hreflang="en"/>
+<link rel="schema.DCAM" href="http://purl.org/dc/dcam/" hreflang="en"/>
+
+<style>
+    table { border-collapse:collapse; border-spacing:0; empty-cells:show }
+    td, th { vertical-align:top; font-size:12pt;}
+    h1, h2, h3, h4, h5, h6 { clear:both;}
+    ol, ul { margin:0; padding:0;}
+    li { list-style: none; margin:0; padding:0;}
+    span.footnodeNumber { padding-right:1em; }
+    span.annotation_style_by_filter { font-size:95%; font-family:Arial; background-color:#fff000;  margin:0; border:0; padding:0;  }
+    span.heading_numbering { margin-right: 0.8rem; }* { margin:0;}
+    .paragraph-P1{ font-size:36pt; font-family:'Liberation Serif'; writing-mode:horizontal-tb; direction:ltr;}
+    /* ODF styles with no properties representable as CSS:
+     { } */
+</style>
 </head>
-<body>
 
-    <div class="box">
-        <h1>EMPIRE 6942</h1>
-        <p>SÉRIE <span id="serie-num">1</span></p>
-        <p class="xp-display">XP : <span id="xp-actuel">0</span> / <span id="xp-requis">900</span></p>
-        
-        <div id="quiz-zone">
-            <h2 id="question-texte">Chargement...</h2>
-            <div id="media-place"></div>
-            <div id="reponses-zone" class="btn-zone"></div>
-        </div>
+<body dir="ltr" style="max-width:21.001cm;margin-top:2cm; margin-bottom:2cm; margin-left:2cm; margin-right:2cm; ">
 
-        <div id="reward-zone" class="hidden">
-            <h2 style="color: #00ff00;">SÉRIE VALIDÉE !</h2>
-            <button onclick="passerALaSuite()" style="background: #00ff00; color: black;">CONTINUER</button>
-        </div>
-
-        <br>
-        <button class="reset-btn" onclick="resetTout()">RESET</button>
-    </div>
-
-    <script>
-        const banqueQuestions = [
-            { q: "Qui a le plus gros cul de ecole", r: "Marie", xp: 500, fausses: ["Djawed", "Loriana", "Gabriel Grenerau"], img: "none" },
-            { q: "Qui est la plus belle de ecole ?", r: "Marie", xp: 900, fausses: ["Agathe", "Clara Reant", "Noe Delattre"], img: "https://xpdevapps.github.io/mokievideos/croieavigion.mp4" },
-            { q: "Louane est quelle origine? ", r: "Espagne", xp: 500, fausses: ["Qatar", "Suédois"], img: "courgette.jpg" },
-            { q: "Comment s'appelle la dame de couture?", r: "Madame deputte", xp: 900, fausses: ["Gauthier", "Brigitte"], img: "https://xpdevapps.github.io/mokievideos/82.mp4" },
-            { q: "Combien de km entre la rue a marie et ma rue?", r: "9.5 km", xp: 500, fausses: ["152 km", "7 km"], img: "marche.jpg" },
-            { q: "Qui a le plus de bodycount?", r: "Marie", xp: 900, fausses: ["Louane", "Gabriel Grenerau"], img: "https://xpdevapps.github.io/mokievideos/96.mp4" },
-            { q: "Est que marie a plus de bodycount que la liste de Epstein?", r: "NON", xp: 500, fausses: ["OUI"], img: "port.jpg" },
-            { q: "Mathys est en crush sur qui?", r: "Marie", xp: 900, fausses: ["Louane", "Lina Lesage"], img: "https://xpdevapps.github.io/Mokievideos/peredodu.mp4" },
-            { q: "Quel est le numéro de la rue du matthys rucquoi? ?", r: "82", xp: 500, fausses: ["69420", "69"], img: "none" },
-            { q: "Qui a la plus grand bite de ecole?", r: "Mathys (MOI)", xp: 900, fausses: ["Djawed", "Noé"], img: "https://xpdevapps.github.io/mokievideos/samlepompiermikelegros.mp4" },
-            { q: "Qui est le voleur de ecole", r: "Djawed", xp: 2500, fausses: ["Michel", "Gauthier"], img: "https://xpdevapps.github.io/mokievideos/gauthier_mikelegros.mp4" }
-        ];
-
-        const listePaliers = [900, 850, 820, 810];
-        let xp = parseInt(localStorage.getItem('xp_6942')) || 0;
-        let serie = parseInt(localStorage.getItem('serie_6942')) || 1;
-
-        function update() {
-            let palier = (serie <= listePaliers.length) ? listePaliers[serie-1] : 500;
-            document.getElementById('xp-actuel').innerText = xp;
-            document.getElementById('xp-requis').innerText = palier;
-            document.getElementById('serie-num').innerText = serie;
-            if (xp >= palier) { afficherRecompense(); } else { afficherQuestion(); }
-        }
-
-        function afficherQuestion() {
-            document.getElementById('quiz-zone').classList.remove('hidden');
-            document.getElementById('reward-zone').classList.add('hidden');
-            let index = (serie - 1) % banqueQuestions.length;
-            let data = banqueQuestions[index];
-            document.getElementById('question-texte').innerText = data.q;
-            
-            let zone = document.getElementById('media-place');
-            let lien = data.img.toLowerCase();
-
-            if (lien.includes('.mp4') || lien.includes('.mov') || lien.includes('videos')) {
-                zone.innerHTML = `<video src="${data.img}" autoplay loop muted playsinline class="media-quiz"></video>`;
-            } else if (lien === "none") {
-                zone.innerHTML = "";
-            } else {
-                zone.innerHTML = `<img src="${data.img}" class="media-quiz" onerror="this.style.display='none'">`;
-            }
-
-            let choix = [{t: data.r, p: data.xp}];
-            data.fausses.forEach(f => choix.push({t: f, p: 0}));
-            choix.sort(() => Math.random() - 0.5);
-
-            let btns = "";
-            choix.forEach(c => {
-                btns += `<button onclick="ajouterXP(${c.p})">${c.t}</button>`;
-            });
-            document.getElementById('reponses-zone').innerHTML = btns;
-        }
-
-        function ajouterXP(p) {
-            if (p > 0) {
-                xp += p;
-                localStorage.setItem('xp_6942', xp);
-                update();
-            } else { alert("FAUX !"); }
-        }
-
-        function resetTout() {
-            if(confirm("RESET ?")) {
-                localStorage.clear();
-                location.reload();
-            }
-        }
-
-        function afficherRecompense() {
-            document.getElementById('quiz-zone').classList.add('hidden');
-            document.getElementById('reward-zone').classList.remove('hidden');
-        }
-
-        function passerALaSuite() {
-            serie++; xp = 0;
-            localStorage.setItem('serie_6942', serie);
-            localStorage.setItem('xp_6942', xp);
-            update();
-        }
-
-        update();
-    </script>
+<p class="paragraph-P1">Error 403 : Forbidden Pages</p>
+<p class="paragraph-P1"> </p><p class="paragraph-P1"> </p><p class="paragraph-P1"> </p><p class="paragraph-P1"> </p>
+<p class="paragraph-P1">made in israel </p>
 </body>
+
 </html>
