@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Attention !</title>
+    <style>
+        body, html {
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            overflow: hidden;
+            /* Ton image de fond Windows */
+            background: url('https://xpdevapps.github.io/mokievideos/430.png') no-repeat center center fixed;
+            background-size: cover;
+            cursor: pointer;
+        }
+
+        #surprise {
+            display: none; 
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: black; 
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #surprise video {
+            width: 100%;
+            max-width: 800px;
+            border: 5px solid red;
+        }
+
+        h1 {
+            font-size: 50px; 
+            color: red; 
+            font-family: 'Arial Black', sans-serif;
+            text-shadow: 2px 2px 10px black;
+        }
+    </style>
+</head>
+<body onclick="lancerTroll()">
+
+    <div id="surprise">
+        <video id="videoTroll" loop playsinline>
+            <source src="https://xpdevapps.github.io/mokievideos/rickroll.webm" type="video/webm">
+            Ton navigateur ne supporte pas la vidéo.
+        </video>
+        <h1>vous etre hacker par Israel et Etat unis</h1>
+    </div>
+
+    <audio id="monSon">
+        <source src="https://xpdevapps.github.io/mokievideos/david.m4a" type="audio/mp4">
+    </audio>
+
+    <script>
+        function lancerTroll() {
+            // 1. Le message d'alerte classique
+            alert("ERREUR SYSTÈME : Accès non autorisé détecté !");
+            
+            // 2. Récupération
+            const surprise = document.getElementById('surprise');
+            const video = document.getElementById('videoTroll');
+            const son = document.getElementById('monSon');
+
+            // 3. Activation du troll
+            surprise.style.display = 'flex'; 
+            
+            // On lance la vidéo et le son
+            video.play().catch(e => console.log("Erreur vidéo:", e));
+            son.play().catch(e => console.log("Erreur son:", e));
+            
+            // On enlève le clic pour pas que l'alerte revienne
+            document.body.onclick = null;
+        }
+    </script>
+
+</body>
+</html>
