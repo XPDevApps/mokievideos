@@ -1,0 +1,22 @@
+joahdzdjkjdklzdjmzmffmzpziekefiepmffiepjencepefempeefiufeqoflêmùeif^ùeeie^fùqffqopijefuopfqeufehfohefjnhfoeheu_fonheopfu
+
+
+"keyline" "compressed:true" "algoritme: XP ENCODING version 2021.02.1192.939" "version : 2021.02.1192.939" "2021" "date : 2021/02/16 15:30:51" "country : GRONIGEN , NETERLANDS, EUROPE" "name of key devlopper : MORK VAUDE KHOLI FIGHITI HARGTIS LTD." "devloppper of endoding : XP DEV NL "
+
+
+key: p1 x 1 . "true " x "true" "read " " read - "card.start" "x " open "card" 
+write " MORK VAUDE KHOLI FIGHITI HARGTIS "
+
+card name : MORK VAUDE KHOLI FIGHITI HARGTIS LTD
+country card : CANADA, MONREAL
+adress : xxxxxxxxxxxx "check adress card - false"
+key devlopper : XP ENCODING "
+
+
+card " ok=acess" "no=false"
+
+
+
+
+
+100%QUALITY SCRIPT
