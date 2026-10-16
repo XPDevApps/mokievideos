@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription / Compte</title>
+    <!-- Inclusion de Tailwind CSS pour un design moderne -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
+        
+        <!-- Section Logo (Format WebP) -->
+        <div class="flex justify-center mb-6">
+            <div class="w-16 h-16 flex items-center justify-center">
+                <img src="https://data.eklablog.com/1/28/77/29/20261016/ob_3c936a_domber.webp" alt="Logo de l'entreprise" class="w-full h-full object-contain">
+            </div>
+        </div>
+
+        <h2 class="text-2xl font-bold mb-2 text-gray-800 text-center">Créer votre compte</h2>
+        <p class="text-sm text-gray-600 mb-6 text-center">Veuillez entrer votre e-mail et définir un mot de passe.</p>
+
+        <form id="authForm" class="space-y-4" novalidate>
+            <!-- Champ E-mail -->
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Adresse e-mail</label>
+                <input type="email" id="email" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    placeholder="votre@email.com">
+                <p id="emailError" class="text-xs text-red-500 mt-1 hidden">Veuillez entrer une adresse e-mail valide.</p>
+            </div>
+
+            <!-- Champ Mot de passe -->
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Mot de passe</label>
+                <input type="password" id="password" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    placeholder="••••••••">
+                <p id="passwordError" class="text-xs text-red-500 mt-1 hidden">Le mot de passe doit contenir au moins 6 caractères.</p>
+            </div>
+
+            <!-- Champ Confirmation Mot de passe -->
+            <div>
+                <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirmer le mot de passe</label>
+                <input type="password" id="confirmPassword" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    placeholder="••••••••">
+                <p id="confirmError" class="text-xs text-red-500 mt-1 hidden">Les mots de passe ne correspondent pas.</p>
+            </div>
+
+            <!-- Bouton de soumission -->
+            <button type="submit" 
+                class="w-full bg-blue-600 text-white font-medium py-2 rounded-lg hover:bg-blue-700 transition duration-200">
+                S'inscrire
+            </button>
+        </form>
+
+        <!-- Message de succès -->
+        <div id="successMessage" class="hidden mt-4 p-3 bg-green-100 text-green-700 rounded-lg text-center text-sm">
+            Compte créé avec succès !
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('authForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        const confirmError = document.getElementById('confirmError');
+        const successMessage = document.getElementById('successMessage');
+
+        // Validation format e-mail
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let isValid = true;
+
+            // Réinitialisation des messages d'erreur
+            emailError.classList.add('hidden');
+            passwordError.classList.add('hidden');
+            confirmError.classList.add('hidden');
+            successMessage.classList.add('hidden');
+
+            // 1. Vérification de l'e-mail
+            if (!validateEmail(emailInput.value)) {
+                emailError.classList.remove('hidden');
+                isValid = false;
+            }
+
+            // 2. Vérification de la longueur du mot de passe (min 6 caractères)
+            if (passwordInput.value.length < 6) {
+                passwordError.classList.remove('hidden');
+                isValid = false;
+            }
+
+            // 3. Vérification de la correspondance des mots de passe
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                confirmError.classList.remove('hidden');
+                isValid = false;
+            }
+
+            // Si tout est valide
+            if (isValid) {
+                successMessage.classList.remove('hidden');
+                form.reset();
+            }
+        });
+    </script>
+
+</body>
+</html>
